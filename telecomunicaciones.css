@@ -1,0 +1,175 @@
+/* --- ESTILOS PÁGINA TELECOM --- */
+
+.intro-p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.full-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 60px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--purpura); /* Púrpura para Telecom */
+}
+
+.alt-color {
+    background: var(--gris-fondo);
+    border-top-color: var(--naranja);
+}
+
+.card-bg-icon {
+    position: absolute;
+    right: -20px;
+    bottom: -30px;
+    font-size: 15rem;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.card-header-main {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card-header-main span {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--purpura);
+    opacity: 0.3;
+}
+
+.card-header-main h3 {
+    font-size: 2rem;
+    color: var(--oscuro);
+}
+
+.card-body-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    max-width: 80%;
+    margin-bottom: 30px;
+}
+
+.check-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    list-style: none;
+}
+
+.check-list li {
+    font-weight: bold;
+    color: var(--oscuro);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.check-list li::before {
+    content: "📡";
+    font-size: 1.1rem;
+}
+
+/* --- DISEÑO MOSAICO TÉCNICO CON FOTOS --- */
+
+.intro-p {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.mosaico-tecnico {
+    margin-bottom: 80px;
+}
+
+.mosaico-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Invierte el orden de la columna en el segundo bloque */
+.reverse .mosaico-item {
+    direction: rtl; /* Pone la imagen a la izquierda */
+}
+
+/* Corrige la dirección del texto dentro del bloque invertido */
+.reverse .mosaico-texto {
+    direction: ltr;
+}
+
+.mosaico-texto {
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+}
+
+.mosaico-texto span {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: var(--purpura);
+    opacity: 0.2;
+    display: block;
+    margin-bottom: -15px;
+}
+
+.mosaico-texto h3 {
+    font-size: 2rem;
+    color: var(--oscuro);
+    margin-bottom: 20px;
+}
+
+.mosaico-texto p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.mosaico-imagen img {
+    width: 100%;
+    height: 450px; /* Altura fija para que todas las fotos sean iguales */
+    object-fit: cover; /* Ajusta la imagen sin deformarla */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Responsivo para Móviles */
+@media (max-width: 768px) {
+    .mosaico-item {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .reverse .mosaico-item {
+        direction: ltr; /* Desactiva la inversión en móvil */
+    }
+    
+    .mosaico-imagen img {
+        height: 250px;
+    }
+    
+    .mosaico-texto {
+        padding: 30px;
+        order: -1; /* Pone el texto encima de la imagen en móvil */
+    }
+}
+
+@media (max-width: 768px) {
+    .full-card { padding: 30px; }
+    .card-header-main h3 { font-size: 1.6rem; }
+    .card-body-text p { max-width: 100%; }
+}

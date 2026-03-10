@@ -1,0 +1,88 @@
+/* --- ESTILOS ESPECÍFICOS PARA PUBLICACIONES --- */
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.post-card {
+    background: var(--blanco);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    border: 1px solid #eee;
+}
+
+.post-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(142, 68, 173, 0.15); /* Sombra purpura muy sutil */
+}
+
+.post-image {
+    position: relative;
+    height: 220px;
+}
+
+.post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-tag {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: var(--gradiente-logo);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.post-info {
+    padding: 25px;
+}
+
+.post-date {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.post-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: var(--oscuro);
+    line-height: 1.3;
+}
+
+.post-info p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.read-more {
+    text-decoration: none;
+    color: var(--purpura);
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.read-more:hover {
+    color: var(--naranja);
+}
+
+/* Marca la página actual en el menú */
+.nav-links li a.active {
+    color: var(--purpura);
+    border-bottom: 2px solid var(--purpura);
+}

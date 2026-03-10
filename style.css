@@ -1,0 +1,517 @@
+/* --- 1. PALETA DE COLORES Y VARIABLES --- */
+:root {
+    --purpura: #8e44ad;
+    --naranja: #e67e22;
+    --amarillo: #f1c40f;
+    --gradiente-logo: linear-gradient(135deg, #8e44ad, #e67e22, #f1c40f);
+    --oscuro: #1a1a1a;
+    --gris-fondo: #f9f9f9;
+    --blanco: #ffffff;
+}
+
+/* --- 2. RESET GENERAL --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--oscuro);
+    line-height: 1.6;
+    background-color: var(--blanco);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 3. HEADER Y NAVEGACIÓN (Corregido) --- */
+header {
+    background-color: var(--blanco);
+    padding: 10px 0; /* Un poco menos de padding porque el logo ya es alto */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+nav.container {
+    display: flex;
+    justify-content: space-between; /* Esto empuja el logo a un lado y el menú al otro */
+    align-items: center;
+    height: 100px; /* Ajusta según el tamaño de tu logo */
+}
+
+/* LOGO: Aquí he subido el tamaño a 90px */
+.main-logo {
+    height: 90px; 
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.main-logo:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--oscuro);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: var(--naranja);
+}
+
+/* BOTÓN DE PRESUPUESTO */
+.btn-cta-nav {
+    background: var(--gradiente-logo); /* Usa el purpura, naranja y amarillo */
+    color: white !important; /* Texto siempre blanco */
+    padding: 12px 24px;
+    border-radius: 50px; /* Bordes totalmente redondeados */
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3); /* Sombra suave naranja */
+}
+
+.btn-cta-nav:hover {
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+    filter: brightness(1.1); /* Brilla un poco más al pasar el ratón */
+}
+
+/* --- 4. HERO SECTION --- */
+.hero {
+    padding: 120px 0;
+    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.75)), 
+                url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1470&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+}
+
+.badge {
+    background: var(--naranja);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-top: 15px;
+    line-height: 1.1;
+}
+
+.hero h1 span {
+    background: var(--gradiente-logo);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-actions {
+    margin-top: 30px;
+}
+
+.btn-primary {
+    background: var(--gradiente-logo);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+/* --- 5. SECCIONES Y SERVICIOS --- */
+.section {
+    padding: 80px 0;
+}
+
+.section-title {
+    margin-bottom: 50px;
+}
+
+.line {
+    width: 60px;
+    height: 4px;
+    background: var(--gradiente-logo);
+    margin-top: 10px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* --- ESTILOS PARA LAS IMÁGENES EN TARJETAS --- */
+
+.service-card {
+    padding: 0; /* Quitamos el padding general para que la imagen llegue al borde */
+    overflow: hidden; /* Corta la imagen si sobresale de las esquinas redondeadas */
+    display: flex;
+    flex-direction: column;
+}
+
+.card-image {
+    width: 100%;
+    height: 200px; /* Altura fija para que todas las fotos se vean iguales */
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la foto sin deformarla */
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .card-image img {
+    transform: scale(1.1); /* Efecto de zoom al pasar el ratón */
+}
+
+.card-content {
+    padding: 30px; /* Recuperamos el espacio para el texto */
+}
+
+.card-content h3 {
+    margin-bottom: 15px;
+    color: var(--purpura);
+}
+
+
+
+.bg-light { background-color: var(--gris-fondo); }
+
+/* --- 6. TELECOM Y FOOTER --- */
+.telecom-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px dashed #ccc;
+    text-align: center;
+}
+
+/* --- NUEVO FOOTER PROFESIONAL --- */
+.main-footer {
+    background-color: var(--oscuro);
+    color: white;
+    padding: 60px 0 20px;
+    margin-top: 80px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-logo {
+    height: 90px;
+    margin-bottom: 20px;
+}
+
+.footer-brand p {
+    color: #bbb;
+    font-size: 0.9rem;
+}
+
+.footer-links h4, .footer-contact h4 {
+    color: var(--naranja);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: var(--amarillo);
+}
+
+.footer-contact p {
+    color: #bbb;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    text-align: center;
+    color: #777;
+    font-size: 0.8rem;
+}
+
+/* --- ANIMACIONES --- */
+
+/* Estado inicial: Invisible y desplazado hacia abajo */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* Estado activo: Visible y en su posición original (se activará con JS) */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Un pequeño retraso para que las tarjetas de servicios aparezcan una tras otra */
+.services-grid .service-card:nth-child(2) { transition-delay: 0.2s; }
+.services-grid .service-card:nth-child(3) { transition-delay: 0.4s; }
+
+/* --- 7. RESPONSIVE --- */
+@media (max-width: 768px) {
+    .main-logo { height: 60px; }
+    .hero h1 { font-size: 2rem; }
+    nav.container { flex-direction: column; gap: 20px; }
+}
+
+
+
+
+
+
+/* --- ESTILOS AVISO DE COOKIES --- */
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(26, 26, 26, 0.95);
+    color: white;
+    padding: 20px 0;
+    z-index: 9999;
+    display: none; /* Solo se ve si el JS lo dice */
+}
+
+.cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.cookie-content p {
+    font-size: 0.9rem;
+    margin: 0;
+    padding-right: 20px;
+}
+
+.cookie-content a {
+    color: var(--naranja); /* Usando tu color de marca */
+    text-decoration: underline;
+}
+
+.btn-cookie {
+    background: var(--gradiente-logo); /* Aplicando tu gradiente */
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: transform 0.2s;
+}
+
+.btn-cookie:hover {
+    transform: scale(1.05);
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .cookie-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+}
+
+
+.especialidades-container {
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.acordeon-item {
+    border-bottom: 1px solid #eee;
+    padding: 15px 0;
+    cursor: pointer;
+}
+
+/* El título del desplegable */
+summary {
+    list-style: none; /* Quita la flecha por defecto */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--oscuro);
+    padding: 10px;
+}
+
+.nav-links li a.active {
+    color: var(--purpura);
+    border-bottom: 2px solid var(--purpura);
+}
+
+/* --- ESTILOS PARA EL MENÚ DESPLEGABLE EN LISTA --- */
+
+.menu-desplegable {
+    position: relative; /* Necesario para posicionar el submenú */
+}
+
+.submenu {
+    position: absolute;
+    top: 100%; /* Aparece justo debajo del padre */
+    left: 0;
+    background-color: var(--blanco);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 10px 0;
+    min-width: 220px;
+    border-radius: 8px;
+    display: none; /* Escondido por defecto */
+    z-index: 1000;
+}
+
+.submenu li {
+    width: 100%;
+    padding: 0;
+}
+
+.submenu li a {
+    color: var(--oscuro) !important;
+    padding: 10px 20px !important;
+    display: block;
+    font-size: 0.9rem;
+    border-bottom: none !important; /* Quitamos el subrayado púrpura aquí */
+}
+
+.submenu li a:hover {
+    background-color: var(--gris-fondo);
+    color: var(--purpura) !important;
+}
+
+/* El truco mágico: al pasar el ratón por el padre, se muestra el hijo */
+.menu-desplegable:hover .submenu {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.flechita {
+    font-size: 0.7rem;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- NUEVA CABECERA DE SECCIÓN IMPACTANTE --- */
+
+.header-impactante {
+    position: relative;
+    height: 400px; /* Altura fija para que la foto panorámica encaje */
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end; /* Pone el texto en la parte inferior */
+    padding-bottom: 60px;
+}
+
+.img-banner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la foto sin deformarla */
+    z-index: 1;
+}
+
+.overlay-profundo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.6)); /* Gradiente oscuro para que el menú y el texto se lean */
+    z-index: 2;
+}
+
+.contenido-banner {
+    position: relative;
+    z-index: 3;
+    color: white; /* Texto blanco sobre el fondo oscuro */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Sombra para que se lea perfecto */
+}
+
+.contenido-banner .section-title small {
+    color: var(--naranja); /* Resaltamos el pequeño texto */
+}
+
+.contenido-banner h2 {
+    font-size: 2.8rem;
+    color: white;
+}
+
+.contenido-banner .line {
+    background: var(--naranja); /* Usamos el color de marca */
+}
+
+.contenido-banner p {
+    font-size: 1.3rem;
+    max-width: 600px;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .header-impactante { height: 300px; }
+    .contenido-banner h2 { font-size: 2rem; }
+    .contenido-banner p { font-size: 1rem; }
+}
+
