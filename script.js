@@ -21,18 +21,3 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach((el) => observer.observe(el));
 
 });
-
-// Función para ocultar el banner y guardar la decisión
-function aceptarCookies() {
-    // Guarda que el usuario aceptó
-    localStorage.setItem('cookiesElektradia', 'aceptadas');
-    // Oculta el banner
-    document.getElementById('cookie-banner').style.display = 'none';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Si no ha aceptado antes, muestra el cartel
-    if (localStorage.getItem('cookiesElektradia') !== 'aceptadas') {
-        document.getElementById('cookie-banner').style.display = 'block';
-    }
-});
