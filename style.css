@@ -515,3 +515,53 @@ summary {
     .contenido-banner p { font-size: 1rem; }
 }
 
+.cookie-overlay {
+    position: fixed;
+    bottom: -150px; /* Escondido al principio */
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
+    z-index: 10000; /* Por encima de TODO */
+    padding: 20px 0;
+    transition: bottom 0.6s ease-in-out;
+}
+
+.cookie-overlay.show {
+    bottom: 0; /* Aparece al añadir la clase */
+}
+
+.cookie-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    gap: 20px;
+}
+
+.cookie-text p {
+    font-size: 0.95rem;
+    color: #333;
+    margin: 0;
+}
+
+.btn-aceptar {
+    background: var(--naranja);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-aceptar:hover {
+    background: var(--purpura);
+}
+
+@media (max-width: 768px) {
+    .cookie-container { flex-direction: column; text-align: center; }
+}
