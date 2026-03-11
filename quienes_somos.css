@@ -6,6 +6,7 @@
     font-size: 1.1rem;
     line-height: 1.8;
     color: #333;
+    text-align: justify;
 }
 
 .subtitulo-seccion {
@@ -46,6 +47,7 @@ summary::-webkit-details-marker { display: none; }
 .content {
     padding: 0 15px 20px 15px;
     color: #555;
+    text-align: justify;
 }
 
 .icon { color: var(--purpura); font-size: 1.4rem; transition: 0.3s; }
