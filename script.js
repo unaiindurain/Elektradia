@@ -1,95 +1,96 @@
-// Esperar a que el DOM esté cargado para evitar errores
+// ESPERAR A QUE EL DOM ESTÉ CARGADO
 document.addEventListener('DOMContentLoaded', () => {
     
-    // Configuración del observador para animaciones al hacer scroll
-    const observerOptions = {
-        threshold: 0.1 // Se activa cuando el 10% del elemento es visible
-    };
-
+    // --- 1. ANIMACIONES AL HACER SCROLL (.reveal) ---
+    const observerOptions = { threshold: 0.1 };
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // Si quieres que la animación solo ocurra una vez, deja de observar el elemento:
-                // observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Seleccionamos todos los elementos con la clase .reveal y los ponemos a "escuchar"
     const animatedElements = document.querySelectorAll('.reveal');
     animatedElements.forEach((el) => observer.observe(el));
 
-});
 
-document.addEventListener('DOMContentLoaded', () => {
+    // --- 2. LÓGICA DEL MENÚ HAMBURGUESA ---
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+
+    if (mobileMenuBtn && navList) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita que el evento 'click' del documento lo cierre al abrirlo
+            navList.classList.toggle('show');
+            mobileMenuBtn.classList.toggle('is-active');
+        });
+
+        // Cerrar al pinchar fuera del menú
+        document.addEventListener('click', (e) => {
+            if (!navList.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navList.classList.remove('show');
+                mobileMenuBtn.classList.remove('is-active');
+            }
+        });
+
+        // Cerrar si pinchan en un enlace del menú
+        navList.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('show');
+                mobileMenuBtn.classList.remove('is-active');
+            });
+        });
+    }
+
+
+    // --- 3. MOSTRAR BANNER DE COOKIES ---
     const banner = document.getElementById('cookies-propio');
-
-    // Si NO existe la marca en el navegador, mostramos el banner
-    if (localStorage.getItem('cookiesAceptadas') !== 'true') {
+    // Comprobamos si ya aceptó (usamos la misma llave para no liarnos)
+    if (banner && !localStorage.getItem('cookiesElektradia')) {
         setTimeout(() => {
             banner.classList.add('show');
-        }, 1000); // Aparece al segundo de cargar
+        }, 1000);
     }
 });
 
-function aceptarCookiesManual() {
-    // 1. Guardamos en el navegador (Local Storage)
-    localStorage.setItem('cookiesAceptadasElektradia', 'true');
+// --- 4. FUNCIONES GLOBALES (FUERA DEL DOMCONTENTLOADED) ---
 
-    // 2. Enviamos los datos a TU HOST de forma invisible (Fetch API)
+function toggleAjustes() {
+    const ajustes = document.getElementById('cookie-ajustes');
+    if (ajustes) {
+        ajustes.style.display = ajustes.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+// UNIFICADA: Solo una función para aceptar cookies
+function aceptarCookiesManual(todo) {
+    const banner = document.getElementById('cookies-propio');
+    const chkStats = document.getElementById('chk-stats');
+
+    let preferencias = {
+        necesarias: true,
+        estadisticas: todo ? true : (chkStats ? chkStats.checked : false)
+    };
+
+    // 1. Guardar localmente
+    localStorage.setItem('cookiesElektradia', JSON.stringify(preferencias));
+
+    // 2. Enviar al host (PHP) para el registro legal
     fetch('guardar_cookie.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ aceptado: true })
+        body: JSON.stringify({ 
+            aceptado: true,
+            preferencias: preferencias 
+        })
     })
     .then(response => response.json())
     .then(data => console.log("Registro guardado en el host"))
     .catch(error => console.error("Error al guardar en host:", error));
 
-    // 3. Cerramos el banner
-    document.getElementById('cookies-propio').classList.remove('show');
-}
-
-function toggleAjustes() {
-    const ajustes = document.getElementById('cookie-ajustes');
-    // Si está escondido lo muestra, si no lo esconde
-    ajustes.style.display = ajustes.style.display === 'none' ? 'block' : 'none';
-}
-
-function aceptarCookiesManual(todo) {
-    let preferencias = {
-        necesarias: true,
-        estadisticas: todo ? true : document.getElementById('chk-stats').checked
-    };
-
-    // Guardamos el objeto entero en LocalStorage
-    localStorage.setItem('cookiesElektradia', JSON.stringify(preferencias));
-
-    // Si estás en un host con PHP, aquí enviarías 'preferencias' al servidor
-    console.log("Preferencias guardadas:", preferencias);
-
-    document.getElementById('cookies-propio').classList.remove('show');
-}
-
-// Lógica para el Menú Hamburguesa
-const mobileMenuBtn = document.getElementById('mobile-menu');
-const navList = document.getElementById('nav-list');
-
-if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', () => {
-        // Abre/Cierra el menú lateral
-        navList.classList.toggle('show');
-        
-        // Transforma las rayitas en una X
-        mobileMenuBtn.classList.toggle('is-active');
-    });
-}
-
-// Para que si el usuario pincha fuera del menú también se cierre (Opcional pero pro)
-document.addEventListener('click', (e) => {
-    if (!navList.contains(e.target) && !mobileMenuBtn.contains(e.target) && navList.classList.contains('show')) {
-        navList.classList.remove('show');
-        mobileMenuBtn.classList.remove('is-active');
+    // 3. Quitar el banner de la vista
+    if (banner) {
+        banner.classList.remove('show');
     }
-});
+}
