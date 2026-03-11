@@ -11,6 +11,10 @@
     .menu-toggle.is-active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
+
+    .menu-toggle.is-active span {
+        background: var(--naranja) !important; /* O el color que prefieras para que se vea claro */
+    }
     
     /* 1. Header y Logo más compacto */
     nav.container {
@@ -32,6 +36,9 @@
         background: none;
         border: none;
         cursor: pointer;
+        display: flex !important;
+        z-index: 9999 !important; /* Un número muy alto para que nada lo tape */
+        position: relative; /* Necesario para que el z-index funcione */
     }
 
     .menu-toggle span {
@@ -56,7 +63,7 @@
         gap: 20px !important;
         transition: 0.4s ease-in-out;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        z-index: 2000;
+        z-index: 9990 !important;
     }
 
     .nav-links.show {
