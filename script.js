@@ -94,3 +94,17 @@ function aceptarCookiesManual(todo) {
         banner.classList.remove('show');
     }
 }
+
+// Lógica para desplegar submenú en móvil
+const especialidadesToggle = document.getElementById('toggle-especialidades');
+
+if (especialidadesToggle) {
+    especialidadesToggle.addEventListener('click', (e) => {
+        // Solo queremos este comportamiento en móviles
+        if (window.innerWidth <= 768) {
+            e.preventDefault(); // Evita cualquier salto
+            const parent = especialidadesToggle.parentElement;
+            parent.classList.toggle('open'); // Añade o quita la clase que lo muestra
+        }
+    });
+}
