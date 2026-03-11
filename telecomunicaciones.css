@@ -137,6 +137,7 @@
     font-size: 1.1rem;
     line-height: 1.8;
     color: #444;
+    text-align: justify;
 }
 
 .mosaico-imagen img {
@@ -166,6 +167,7 @@
         padding: 30px;
         order: -1; /* Pone el texto encima de la imagen en móvil */
     }
+    
 }
 
 @media (max-width: 768px) {
