@@ -92,6 +92,19 @@
         right: 0; /* APARECE */
     }
 
+    .container {
+        padding: 0 30px !important; /* Ajusta este número (30px) si quieres más o menos margen */
+        width: 100% !important;
+        box-sizing: border-box; /* Fundamental para que el padding no ensanche la página */
+    }
+    
+    /* Si tienes secciones de texto sueltas que no entran en el container, 
+       puedes aplicarles el margen también aquí */
+    .info-block, .metodo-texto, .texto-completo {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
     /* 4. Cookies "Slim" para que no molesten */
     .cookie-overlay {
         padding: 10px 0 !important;
@@ -108,3 +121,4 @@
         width: auto !important;
     }
 }
+
