@@ -78,13 +78,18 @@ const navList = document.getElementById('nav-list');
 
 if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', () => {
+        // Abre/Cierra el menú lateral
         navList.classList.toggle('show');
+        
+        // Transforma las rayitas en una X
+        mobileMenuBtn.classList.toggle('is-active');
     });
 }
 
-// Cerrar el menú automáticamente al hacer clic en un enlace
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
+// Para que si el usuario pincha fuera del menú también se cierre (Opcional pero pro)
+document.addEventListener('click', (e) => {
+    if (!navList.contains(e.target) && !mobileMenuBtn.contains(e.target) && navList.classList.contains('show')) {
         navList.classList.remove('show');
-    });
+        mobileMenuBtn.classList.remove('is-active');
+    }
 });
