@@ -1,5 +1,5 @@
 /* --- CSS ESPECÍFICO PARA MÓVILES (Ancho < 768px) --- */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
 
     /* --- 1. HEADER Y NAVEGACIÓN --- */
     header {
@@ -7,10 +7,9 @@
     }
 
     nav.container {
-        flex-direction: column; /* Apila el logo y el menú uno sobre otro */
-        height: auto; /* Que el nav crezca según el contenido */
-        gap: 15px; /* Separación entre logo y menú */
-        text-align: center;
+        height: auto !important; /* Quita los 100px fijos */
+        padding: 10px 0 !important;
+        gap: 10px !important;
     }
 
     /* LOGO: Que sea grande y centrado en móvil */
@@ -21,16 +20,13 @@
     }
 
     .main-logo {
-        height: 60px; /* Tamaño decente en móvil */
-        width: auto;
+        height: 50px !important; /* Logo más discreto para móvil */
     }
 
     /* MENÚ: Que no se pegue al logo y se vea como una lista limpia */
     .nav-links {
-        flex-direction: column; /* Apila los enlaces en vertical */
-        gap: 10px; /* Separación entre ellos */
-        padding: 10px 0;
-        width: 100%;
+        gap: 10px !important; /* Enlaces más juntos */
+        margin-bottom: 10px;
     }
 
     .nav-links li a {
@@ -40,11 +36,8 @@
 
     /* BOTÓN PRESUPUESTO: Que no flote, que se adapte */
     .btn-cta-nav {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 20px;
-        width: 90%; /* Que ocupe casi todo el ancho */
-        text-align: center;
+        padding: 8px 20px !important; /* Botón de presupuesto más estilizado */
+        font-size: 0.9rem !important;
     }
 
     /* --- 2. BANNER DE COOKIES --- */
