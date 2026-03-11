@@ -20,14 +20,14 @@
     
     /* 1. Header y Logo más compacto */
     nav.container {
-        height: 140px !important;
+        height: 70px !important;
         flex-direction: row !important; /* Mantiene logo a un lado y menú al otro */
         justify-content: space-between !important;
         padding: 0 15px !important;
     }
 
     .main-logo {
-        height: 45px !important;
+        height: 90px !important;
     }
 
     /* 2. El Botón de las 3 rayitas */
@@ -121,5 +121,6 @@
         width: auto !important;
     }
 }
+
 
 
