@@ -20,7 +20,7 @@
     
     /* 1. Header y Logo más compacto */
     nav.container {
-        height: 70px !important;
+        height: 140px !important;
         flex-direction: row !important; /* Mantiene logo a un lado y menú al otro */
         justify-content: space-between !important;
         padding: 0 15px !important;
@@ -121,4 +121,5 @@
         width: auto !important;
     }
 }
+
 
