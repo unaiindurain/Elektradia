@@ -118,6 +118,7 @@ nav.container {
 
 .hero h1 {
     font-size: 3rem;
+    text-align: center;
     margin-top: 15px;
     line-height: 1.1;
 }
@@ -130,6 +131,10 @@ nav.container {
 
 .hero-actions {
     margin-top: 30px;
+}
+
+.hero p{
+    text-align: center;
 }
 
 .btn-primary {
@@ -515,6 +520,8 @@ summary {
     .contenido-banner p { font-size: 1rem; }
 }
 
+
+/* --- BANNER DE COOKIES PROPIO --- */
 .cookie-overlay {
     position: fixed;
     bottom: -150px; /* Escondido al principio */
@@ -562,6 +569,113 @@ summary {
     background: var(--purpura);
 }
 
+/* Estilos extra para los ajustes */
+.cookie-settings {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+.settings-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+/* El diseño del interruptor (Switch) */
+.switch { position: relative; display: inline-block; width: 40px; height: 20px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+    position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #ccc; transition: .4s; border-radius: 20px;
+}
+.slider:before {
+    position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px;
+    background-color: white; transition: .4s; border-radius: 50%;
+}
+input:checked + .slider { background-color: var(--naranja); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+.btn-guardar {
+    background: transparent;
+    color: var(--oscuro);
+    border: 1px solid var(--oscuro);
+    padding: 5px 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
 @media (max-width: 768px) {
     .cookie-container { flex-direction: column; text-align: center; }
+}
+
+/* --- ESTILOS EXTRA HOME --- */
+
+/* Estadísticas */
+.stats-section {
+    background: var(--oscuro);
+    color: white;
+    padding: 70px 0;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    text-align: center;
+}
+.stat-number {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--naranja);
+}
+
+/* Bloques de Información */
+.servicios-detallados { padding: 90px 0; background: #fff; }
+.titulo-seccion { text-align: center; margin-bottom: 50px; font-size: 2.2rem; }
+.grid-informacion {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+.info-block h3 { color: var(--naranja); margin-bottom: 20px; font-size: 1.7rem; }
+.lista-tecnica { list-style: none; margin-top: 25px; }
+.lista-tecnica li { 
+    position: relative; 
+    padding-left: 30px; 
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+.lista-tecnica li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--naranja);
+    font-weight: bold;
+}
+
+/* Metodología */
+.metodologia { padding: 100px 0; background: var(--gris-fondo); }
+.metodo-texto { max-width: 800px; margin: 0 auto; text-align: center; }
+.puntos-clave { margin-top: 40px; text-align: left; }
+.punto { 
+    background: white; 
+    padding: 25px; 
+    margin-bottom: 20px; 
+    border-left: 6px solid var(--naranja);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+@media (max-width: 768px) {
+    .grid-informacion { grid-template-columns: 1fr; }
 }
