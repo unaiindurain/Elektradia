@@ -50,3 +50,41 @@ function aceptarCookiesManual() {
     // 3. Cerramos el banner
     document.getElementById('cookies-propio').classList.remove('show');
 }
+
+function toggleAjustes() {
+    const ajustes = document.getElementById('cookie-ajustes');
+    // Si está escondido lo muestra, si no lo esconde
+    ajustes.style.display = ajustes.style.display === 'none' ? 'block' : 'none';
+}
+
+function aceptarCookiesManual(todo) {
+    let preferencias = {
+        necesarias: true,
+        estadisticas: todo ? true : document.getElementById('chk-stats').checked
+    };
+
+    // Guardamos el objeto entero en LocalStorage
+    localStorage.setItem('cookiesElektradia', JSON.stringify(preferencias));
+
+    // Si estás en un host con PHP, aquí enviarías 'preferencias' al servidor
+    console.log("Preferencias guardadas:", preferencias);
+
+    document.getElementById('cookies-propio').classList.remove('show');
+}
+
+// Lógica para el Menú Hamburguesa
+const mobileMenuBtn = document.getElementById('mobile-menu');
+const navList = document.getElementById('nav-list');
+
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+        navList.classList.toggle('show');
+    });
+}
+
+// Cerrar el menú automáticamente al hacer clic en un enlace
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navList.classList.remove('show');
+    });
+});
