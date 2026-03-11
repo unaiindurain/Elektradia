@@ -27,7 +27,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
 /* --- 3. HEADER Y NAVEGACIÓN (Corregido) --- */
@@ -679,3 +679,4 @@ input:checked + .slider:before { transform: translateX(20px); }
 @media (max-width: 768px) {
     .grid-informacion { grid-template-columns: 1fr; }
 }
+
