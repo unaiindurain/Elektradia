@@ -49,7 +49,7 @@ nav.container {
 
 /* LOGO: Aquí he subido el tamaño a 90px */
 .main-logo {
-    height: 200px; 
+    height: 400px; 
     width: auto;
     display: block;
     transition: transform 0.3s ease;
@@ -758,3 +758,4 @@ input:checked + .slider:before { transform: translateX(20px); }
         width: 100%;
     }
 }
+
