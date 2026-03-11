@@ -5,6 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elektradia Karotxe SLL | Seguridad y Energía</title>
+
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="79af5a29-07b3-466b-820f-ba06a5086ef7"
+        type="text/javascript"></script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -19,9 +23,15 @@
                     <img src="img/logo.png" alt="Logo Elektradia Karotxe SLL" class="main-logo">
                 </a>
             </div>
-            <ul class="nav-links">
-                <li><a href="quienes_somos.html">Quienes somos</a></li>
 
+            <button class="menu-toggle" id="mobile-menu" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-list">
+                <li><a href="quienes_somos.html">Quienes somos</a></li>
                 <li class="menu-desplegable">
                     <a href="Especialidades.html">Especialidades<span class="flechita">▼</span></a>
                     <ul class="submenu">
@@ -30,7 +40,6 @@
                         <li><a href="telecomunicaciones.html">Telecomunicaciones</a></li>
                     </ul>
                 </li>
-
                 <li><a href="publicaciones.html">Publicaciones</a></li>
                 <li><a href="contacto.html" class="btn-cta-nav">Solicitar Presupuesto</a></li>
             </ul>
@@ -158,12 +167,30 @@
 
     <div id="cookies-propio" class="cookie-overlay">
         <div class="cookie-container">
-            <div class="cookie-text">
-                <p>En <strong>Elektradia</strong> usamos cookies para que la web funcione bien. Al seguir navegando,
-                    aceptas su uso. <a href="https://www.linkedin.com" target="_blank">Saber más</a></p>
+            <div class="cookie-main-content">
+                <div class="cookie-text">
+                    <p>En <strong>Elektradia</strong> usamos cookies para mejorar tu experiencia técnica.
+                        <a href="javascript:void(0)" onclick="toggleAjustes()">Configurar preferencias</a>
+                    </p>
+                </div>
+                <div class="cookie-buttons">
+                    <button onclick="aceptarCookiesManual(true)" class="btn-aceptar">Aceptar todas</button>
+                </div>
             </div>
-            <div class="cookie-buttons">
-                <button onclick="aceptarCookiesManual()" class="btn-aceptar">Aceptar</button>
+
+            <div id="cookie-ajustes" class="cookie-settings" style="display: none;">
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <span><strong>Necesarias</strong> (Siempre activas)</span>
+                        <label class="switch"><input type="checkbox" checked disabled><span
+                                class="slider"></span></label>
+                    </div>
+                    <div class="setting-item">
+                        <span><strong>Estadísticas</strong> (Google Analytics)</span>
+                        <label class="switch"><input type="checkbox" id="chk-stats"><span class="slider"></span></label>
+                    </div>
+                </div>
+                <button onclick="aceptarCookiesManual(false)" class="btn-guardar">Guardar selección</button>
             </div>
         </div>
     </div>
