@@ -70,15 +70,16 @@
     }
 
     .submenu {
-        display: none; /* Por defecto escondido */
-        list-style: none;
-        padding-left: 20px;
-        background: #f4f4f4;
+        display: none !important; 
+        width: 100%;
+        padding-left: 20px !important;
+        background: #f9f9f9;
     }
 
-    /* Cuando el padre tenga la clase 'open', mostramos el hijo */
+    /* Solo se muestra cuando el padre tiene la clase .open */
     .menu-desplegable.open .submenu {
         display: block !important;
+        margin-top: 10px;
     }
     
     /* Opcional: que la flechita gire al abrir */
