@@ -52,55 +52,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
-
-    // --- 3. MOSTRAR BANNER DE COOKIES ---
-    const banner = document.getElementById('cookies-propio');
-    // Comprobamos si ya aceptó (usamos la misma llave para no liarnos)
-    if (banner && !localStorage.getItem('cookiesElektradia')) {
-        setTimeout(() => {
-            banner.classList.add('show');
-        }, 1000);
-    }
-});
-
-// --- 4. FUNCIONES GLOBALES (FUERA DEL DOMCONTENTLOADED) ---
-
-function toggleAjustes() {
-    const ajustes = document.getElementById('cookie-ajustes');
-    if (ajustes) {
-        ajustes.style.display = ajustes.style.display === 'none' ? 'block' : 'none';
-    }
 }
 
-// UNIFICADA: Solo una función para aceptar cookies
-function aceptarCookiesManual(todo) {
-    const banner = document.getElementById('cookies-propio');
-    const chkStats = document.getElementById('chk-stats');
-
-    let preferencias = {
-        necesarias: true,
-        estadisticas: todo ? true : (chkStats ? chkStats.checked : false)
-    };
-
-    // 1. Guardar localmente
-    localStorage.setItem('cookiesElektradia', JSON.stringify(preferencias));
-
-    // 2. Enviar al host (PHP) para el registro legal
-    fetch('guardar_cookie.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            aceptado: true,
-            preferencias: preferencias
-        })
-    })
-        .then(response => response.json())
-        .then(data => console.log("Registro guardado en el host"))
-        .catch(error => console.error("Error al guardar en host:", error));
-
-    // 3. Quitar el banner de la vista
-    if (banner) {
-        banner.classList.remove('show');
-    }
-}
