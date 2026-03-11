@@ -648,7 +648,15 @@ input:checked + .slider:before { transform: translateX(20px); }
     grid-template-columns: 1fr 1fr;
     gap: 60px;
 }
-.info-block h3 { color: var(--naranja); margin-bottom: 20px; font-size: 1.7rem; }
+.info-block h3 { 
+    color: var(--naranja);
+    margin-bottom: 20px;
+    font-size: 1.7rem;
+    text-align: center;
+}
+.info-block p {
+    text-align: justify;
+}
 .lista-tecnica { list-style: none; margin-top: 25px; }
 .lista-tecnica li { 
     position: relative; 
@@ -679,4 +687,5 @@ input:checked + .slider:before { transform: translateX(20px); }
 @media (max-width: 768px) {
     .grid-informacion { grid-template-columns: 1fr; }
 }
+
 
