@@ -69,6 +69,24 @@
         z-index: 9999 !important; /* POR DEBAJO DE LA X */
     }
 
+    .submenu {
+        display: none; /* Por defecto escondido */
+        list-style: none;
+        padding-left: 20px;
+        background: #f4f4f4;
+    }
+
+    /* Cuando el padre tenga la clase 'open', mostramos el hijo */
+    .menu-desplegable.open .submenu {
+        display: block !important;
+    }
+    
+    /* Opcional: que la flechita gire al abrir */
+    .menu-desplegable.open .flechita {
+        transform: rotate(180deg);
+        display: inline-block;
+    }
+
     .nav-links.show {
         right: 0; /* APARECE */
     }
