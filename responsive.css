@@ -2,14 +2,16 @@
 
     .menu-toggle.is-active span:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
+        background: var(--naranja) !important;
     }
 
     .menu-toggle.is-active span:nth-child(2) {
-        opacity: 0; /* Desaparece la raya del medio */
+        opacity: 0;
     }
 
     .menu-toggle.is-active span:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
+        background: var(--naranja) !important;
     }
 
     .menu-toggle.is-active span {
@@ -36,9 +38,10 @@
         background: none;
         border: none;
         cursor: pointer;
-        display: flex !important;
-        z-index: 9999 !important; /* Un número muy alto para que nada lo tape */
-        position: relative; /* Necesario para que el z-index funcione */
+        position: fixed !important; /* SE QUEDA FIJO AL NAVEGAR */
+        top: 25px;
+        right: 20px;
+        z-index: 10000 !important; /* EL VALOR MÁS ALTO */
     }
 
     .menu-toggle span {
@@ -53,21 +56,21 @@
     .nav-links {
         position: fixed;
         top: 0;
-        right: -100%; /* Escondido a la derecha */
+        right: -100%; /* ESCONDIDO */
         height: 100vh;
-        width: 250px;
+        width: 280px;
         background: white;
         flex-direction: column !important;
         align-items: flex-start !important;
-        padding: 80px 30px !important;
-        gap: 20px !important;
+        padding: 100px 30px !important; /* ESPACIO PARA QUE LA X NO TAPE EL TEXTO */
+        gap: 25px !important;
         transition: 0.4s ease-in-out;
         box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        z-index: 9990 !important;
+        z-index: 9999 !important; /* POR DEBAJO DE LA X */
     }
 
     .nav-links.show {
-        right: 0; /* Se muestra al activar 'show' */
+        right: 0; /* APARECE */
     }
 
     /* 4. Cookies "Slim" para que no molesten */
