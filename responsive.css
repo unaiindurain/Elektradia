@@ -1,83 +1,68 @@
-/* --- CSS ESPECÍFICO PARA MÓVILES (Ancho < 768px) --- */
 @media (max-width: 768px) {
-
-    /* --- 1. HEADER Y NAVEGACIÓN --- */
-    header {
-        padding: 10px 0; /* Menos espacio arriba/abajo */
-    }
-
+    /* 1. Header y Logo más compacto */
     nav.container {
-        height: auto !important; /* Quita los 100px fijos */
-        padding: 10px 0 !important;
-        gap: 10px !important;
-    }
-
-    /* LOGO: Que sea grande y centrado en móvil */
-    .logo-container {
-        display: flex;
-        justify-content: center; /* Centra el logo */
-        width: 100%;
+        height: 70px !important;
+        flex-direction: row !important; /* Mantiene logo a un lado y menú al otro */
+        justify-content: space-between !important;
+        padding: 0 15px !important;
     }
 
     .main-logo {
-        height: 50px !important; /* Logo más discreto para móvil */
+        height: 45px !important;
     }
 
-    /* MENÚ: Que no se pegue al logo y se vea como una lista limpia */
+    /* 2. El Botón de las 3 rayitas */
+    .menu-toggle {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background: #1a1a1a;
+        border-radius: 2px;
+        transition: 0.3s;
+    }
+
+    /* 3. El Menú que aparece desde el lado */
     .nav-links {
-        gap: 10px !important; /* Enlaces más juntos */
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido a la derecha */
+        height: 100vh;
+        width: 250px;
+        background: white;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 80px 30px !important;
+        gap: 20px !important;
+        transition: 0.4s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 2000;
+    }
+
+    .nav-links.show {
+        right: 0; /* Se muestra al activar 'show' */
+    }
+
+    /* 4. Cookies "Slim" para que no molesten */
+    .cookie-overlay {
+        padding: 10px 0 !important;
+    }
+    
+    .cookie-text p {
+        font-size: 0.75rem !important;
         margin-bottom: 10px;
     }
 
-    .nav-links li a {
-        font-size: 0.95rem; /* Un poco más pequeño para que quepa */
-        display: block; /* Ocupa todo el ancho para que sea fácil pulsar con el dedo */
-    }
-
-    /* BOTÓN PRESUPUESTO: Que no flote, que se adapte */
-    .btn-cta-nav {
-        padding: 8px 20px !important; /* Botón de presupuesto más estilizado */
-        font-size: 0.9rem !important;
-    }
-
-    /* --- 2. BANNER DE COOKIES --- */
-    /* Lo que pasaba es que no tenía z-index o se veía cortado */
-    .cookie-overlay {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 15px 0;
-        z-index: 99999; /* Por encima de TODO */
-        box-shadow: 0 -3px 15px rgba(0,0,0,0.2);
-    }
-
-    .cookie-container {
-        flex-direction: column; /* Texto arriba, botón abajo */
-        text-align: center;
-        gap: 15px; /* Separación entre texto y botón */
-        padding: 0 15px;
-    }
-
-    .cookie-text p {
-        font-size: 0.85rem; /* Un poco más pequeño para que no ocupe 4 líneas */
-        line-height: 1.3;
-        margin: 0;
-    }
-
     .btn-aceptar {
-        width: 80%; /* Botón grande y centrado para fácil pulsación */
-        padding: 12px 0;
-        text-align: center;
-    }
-
-    /* --- 3. SECCIONES (Para evitar desbordes) --- */
-    .container {
-        max-width: 100%; /* Ocupa todo el ancho */
-        padding: 0 15px; /* Margen interior ligero a los lados */
-    }
-
-    .card-content h3 {
-        font-size: 1.1rem; /* Título de tarjeta más pequeño */
+        padding: 8px 20px !important;
+        font-size: 0.8rem !important;
+        width: auto !important;
     }
 }
